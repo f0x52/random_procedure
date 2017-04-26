@@ -9,6 +9,10 @@ import (
 	"os"
 	"time"
 )
+// Below are the settings
+// WARNING:
+// Do not use animate in combination with high res, high lines or high length
+
 
 const (
 	sizeX   = 3360
@@ -94,11 +98,6 @@ func main() {
 			}
 		}
 	}
-	//draw()
-	//file, _ := os.Create("stage/out" + time.Now().Format("150405") + ".png")
-	//defer file.Close()
-	//png.Encode(file, img)
-	//save = 0
 	if animate {
 		file, _ := os.Create("out.gif")
 		gif.EncodeAll(file, &gif.GIF{Image: frames, Delay: delays})
@@ -110,18 +109,12 @@ func main() {
 }
 
 func draw(x int, y int, col int) {
-	//	for x := 0; x < sizeX; x++ {
-	//		for y := 0; y < sizeY; y++ {
 	switch col {
-	//case 0:
-	//	img.Set(x, y, color.RGBA{21, 22, 25, 255}) //bg
 	case 1:
 		img.Set(x, y, color.RGBA{230, 230, 230, 255})
 	case 2:
 		img.Set(x, y, color.RGBA{107, 238, 255, 255})
 	}
-	//}
-	//}
 	if animate {
 		save++
 		if save == 10 {
